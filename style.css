@@ -52,16 +52,22 @@ header h2 {
 }
 
 .key, .display  {
-    border: 1px solid #000;
-    height: 100%;
     border-radius: 10px;
 }
 
 .key {
+    height: 93%;
     width: 22%;
-    margin: 0 1.5%;
-    padding-top: 6.5%;
+    margin: 5% 1.5% 0;
+    padding-top: 35px;
     background-color: #003333;
+    font-size: 2em;
+    text-align: center;
+}
+
+.key:active {
+    padding: 4px 5px 5px;
+    font-size: 3em;
 }
 
 
@@ -75,6 +81,14 @@ header h2 {
     background-color: #FF3333;
 }
 
+.clear:active {
+    padding: 4px 5px 5px;
+    font-size: 1em;
+}
+
+.clear p {
+    padding-top: 10px;
+}
 .display {
     background-color: #999999;
     height: 100%;
@@ -82,6 +96,8 @@ header h2 {
     margin-left: 1.9%;
     padding-top: 35px;
     font-size: 1.5em;
+    border: 2px solid rgb(74,79,82);
+    box-shadow: inset 0 0 10px #000000;
 }
 
 .clearContainer {
@@ -94,14 +110,11 @@ header h2 {
 
 .clearContainer>div div {
     height: 45%;
-    margin: 2.5% 0;
-    border: 1px solid #000;
+    margin: 9.5% 0;
     border-radius: 10px;
 }
 
-.clearContainer p {
-    font-size: 1em;
-}
+
 
 
 
