@@ -14,39 +14,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
-    <script src="http://Learning-Fuze.github.io/calculator/calculator.js" type="text/javascript"></script>
-    <script>
-        function callback(type, value, item ){
-            switch (value) {
-                case undefined:
-                    $('#display').html("");
-                    break;
-                default:
-                    $('#display').html(value);
-                    break;
-            }
-        }
-        // my_calculator - creates a new calculator object
-        var my_calculator = new calculator(callback);
-        //after DOM load add click handlers to all buttons
-        $(document).ready(function () {
-            $('button').on('click', function () {
-                var val = $(this).text();
-                switch (val) {
-                    case 'CE':
-                        my_calculator.allClear();
-                        break;
-                    case 'C':
-                        my_calculator.clear();
-                        break;
-                    default:
-                        my_calculator.addItem($(this).text());
-                        break;
-                }
-            });
-        })
-    </script>
-
+    <script src="scripts.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -68,31 +36,31 @@
             </div>
 
             <div class="row">
-                <button class="col-xs-3 key">1</button>
-                <button class="col-xs-3 key">2</button>
-                <button class="col-xs-3 key">3</button>
-                <button class="col-xs-3 key">+</button>
+                <button class="col-xs-3 key number">1</button>
+                <button class="col-xs-3 key number">2</button>
+                <button class="col-xs-3 key number">3</button>
+                <button class="col-xs-3 key operator">+</button>
             </div>
 
             <div class="row">
-                <button class="col-xs-3 key">4</button>
-                <button class="col-xs-3 key">5</button>
-                <button class="col-xs-3 key">6</button>
-                <button class="col-xs-3 key">-</button>
+                <button class="col-xs-3 key number">4</button>
+                <button class="col-xs-3 key number">5</button>
+                <button class="col-xs-3 key number">6</button>
+                <button class="col-xs-3 key operator">-</button>
             </div>
 
             <div class="row">
-                <button class="col-xs-3 key">7</button>
-                <button class="col-xs-3 key">8</button>
-                <button class="col-xs-3 key">9</button>
-                <button class="col-xs-3 key">/</button>
+                <button class="col-xs-3 key number">7</button>
+                <button class="col-xs-3 key number">8</button>
+                <button class="col-xs-3 key number">9</button>
+                <button class="col-xs-3 key operator">/</button>
             </div>
 
             <div class="row">
-                <button class="col-xs-3 key">0</button>
-                <button class="col-xs-3 key">.</button>
-                <button class="col-xs-3 key">=</button>
-                <button class="col-xs-3 key">X</button>
+                <button class="col-xs-3 key number">0</button>
+                <button class="col-xs-3 key number">.</button>
+                <button class="col-xs-3 key operator">=</button>
+                <button class="col-xs-3 key operator">*</button>
             </div>
         </div>
 
