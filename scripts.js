@@ -60,11 +60,49 @@ function updateDisplay(){
     $('#display').text(output);
 }
 
-//function
-//
-//
+function performCalculation(num1,num2,operator){
+    var result;
+    switch(operator) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            result = num1 / num2;
+            break;
+    }
+    return result;
 
+}
 
+function parseMath(){
+    var num1;
+    var num2;
+    var operator;
+    inputStorage.forEach(function(ele) {
+        console.log('ele ' + parseInt(ele));
+        if(isNaN(ele)) {
+           console.log('first conditional '+ ele);
+            operator = ele;
+        }
+        else if(!isNaN(ele) && num1 == undefined){
+            num1 = parseFloat(ele);
+            console.log(num1);
+        }
+        else if(!isNaN(ele) && num2 == undefined) {
+            num2 = parseFloat(ele);
+            console.log(num2);
+        }
+    });
+    var result = performCalculation(num1,num2,operator);
+    console.log("This is the result", result);
+    $('#display').text(result);
+}
 
 
 
@@ -82,5 +120,7 @@ $(document).ready(function(){
         storeOperator($(this).text());
     });
 
-
+    $('.equals').click(function() {
+        parseMath();
+    });
 });
