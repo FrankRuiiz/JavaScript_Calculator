@@ -11,11 +11,18 @@ var storageIndex = 0;
 //takes in the buttonNumberValue from the click event
 function storeNumber(buttonNumberValue){
     console.log('store number button_value', buttonNumberValue);
-
-    //Takes the array inputStorage at the current storageIndex and adds the buttonNumberValue to it
-    inputStorage[storageIndex]+=buttonNumberValue;
-    console.log('input storage: ', inputStorage);
-
+    if(!isNaN(inputStorage[storageIndex])) {
+        console.log('two numbers in a row');
+        //Takes the array inputStorage at the current storageIndex and adds the buttonNumberValue to it
+        inputStorage[storageIndex] += buttonNumberValue;
+        console.log('input storage: ', inputStorage);
+    }
+    else {
+        storageIndex++;
+        inputStorage[storageIndex] = '';
+        inputStorage[storageIndex] = buttonNumberValue;
+    }
+    console.log(inputStorage[storageIndex]);
     //runs the function to update the display
     updateDisplay();
 }
@@ -24,26 +31,28 @@ function storeNumber(buttonNumberValue){
 //takes in the buttonOperatorValue from the click event
 function storeOperator(buttonOperatorValue) {
     console.log('store buttonOperatorValue', buttonOperatorValue);
+    if(isNaN(inputStorage[storageIndex])) {
+        console.log(inputStorage[storageIndex]);
+        inputStorage[storageIndex] = '';
+        inputStorage[storageIndex] = buttonOperatorValue;
+        console.log(inputStorage[storageIndex]);
+    }
+    else {
+        //increase storage index number by one
+        storageIndex++;
 
-    //increase storage index number by one
-    storageIndex++;
+        //sets input storage at the current index to empty string otherwise we get undefined for the next addition
+        inputStorage[storageIndex] = '';
 
-    //sets input storage at the current index to empty string otherwise we get undefined for the next addition
-    inputStorage[storageIndex] = '';
-
-    //takes the array inputStorage at the current storageIndex and adds the buttonOperatorValue to it
-    inputStorage[storageIndex]+=buttonOperatorValue;
-
-    //increase storage index number by one
-    storageIndex++;
-
-    //sets input storage at the current index to empty string otherwise we get undefined for the next addition
-    inputStorage[storageIndex] = '';
-
+        //takes the array inputStorage at the current storageIndex and adds the buttonOperatorValue to it
+        inputStorage[storageIndex] = buttonOperatorValue;
+        console.log('input storage: ', inputStorage);
+    }
     //runs the function to update the display
     updateDisplay();
-
 }
+
+
 
 //takes info from storeOperator and storeNumber and shows it on the calculators display
 function updateDisplay(){
@@ -109,18 +118,16 @@ function parseMath(){
 }
 
 
-function clearCalc(clearVal){
-    if(clearVal == 'CE') {
-        inputStorage = [''];
-        storageIndex = 0;
-        $('#display').text('');
-    }
-    else if(clearVal == 'C') {
-        inputStorage = inputStorage.slice(0,-1);
-        console.log('Input storage after C:', inputStorage);
-        inputStorage[storageIndex] = '';
-        $('#display').text('');
-    }
+function clearAll(){
+    inputStorage = [''];
+    storageIndex = 0;
+    updateDisplay();
+}
+
+function specialClear() {
+    inputStorage = [''];
+    storageIndex = 0;
+    updateDisplay();
 }
 
 
@@ -147,7 +154,11 @@ $(document).ready(function(){
         parseMath();
     });
 
-    $('.clear').click(function(){
-        clearCalc($(this).text());
+    $('.clearContainer div button:first-child').click(function(){
+        clearAll();
+    });
+
+    $('.clearContainer div button:last-child').click(function(){
+        specialClear();
     });
 });
