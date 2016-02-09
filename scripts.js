@@ -32,6 +32,7 @@ function storeNumber(buttonNumberValue){
 function storeOperator(buttonOperatorValue) {
     console.log('store buttonOperatorValue', buttonOperatorValue);
     if(isNaN(inputStorage[storageIndex])) {
+        console.log('Opertator isNaN');
         console.log(inputStorage[storageIndex]);
         inputStorage[storageIndex] = '';
         inputStorage[storageIndex] = buttonOperatorValue;
@@ -91,30 +92,35 @@ function performCalculation(num1,num2,operator){
 
 //takes the input values from inputStorage, parses them and stores them in variables
 function parseMath(){
-    var num1;
-    var num2;
-    var operator;
     //for loop iterates through inputStorage
-    inputStorage.forEach(function(ele) {
-        console.log('ele ' + parseInt(ele));
-        if(isNaN(ele)) {
-           console.log('first conditional '+ ele);
-            operator = ele;
+    for(var i = 0; i < inputStorage.length; i++) {
+        var num1;
+        var num2;
+        var operator;
+        console.log('ele ' + parseFloat(inputStorage[i]));
+        if(isNaN(inputStorage[i])) {
+            operator = inputStorage[i];
+            console.log('first conditional '+ operator);
         }
-        else if(!isNaN(ele) && num1 == undefined){
-            num1 = parseFloat(ele);
-            console.log(num1);
+        else if(!isNaN(inputStorage[i]) && num1 == undefined){
+            num1 = parseFloat(inputStorage[i]);
+            console.log('num1 is: ',num1);
         }
-        else if(!isNaN(ele) && num2 == undefined) {
-            num2 = parseFloat(ele);
-            console.log(num2);
+        else if(!isNaN(inputStorage[i]) && num2 == undefined) {
+            num2 = parseFloat(inputStorage[i]);
+            console.log('num1 is: ',num2);
         }
-    });
-    //calls performCalculation function with parameters and stores them in the result variable
-    var result = performCalculation(num1,num2,operator);
-    console.log("This is the result", result);
-    //displays the results to the display screen
-    $('#display').text(result);
+    }
+    if (num1 != undefined && num2 != undefined && operator != undefined) {
+        //calls performCalculation function with parameters and stores them in the result variable
+        var result = performCalculation(num1,num2,operator);
+        inputStorage.unshift(result);
+        inputStorage.splice(1,3);
+        console.log("This is the result", result);
+        //displays the results to the display screen
+        $('#display').text(result);
+    }
+
 }
 
 
@@ -151,7 +157,9 @@ $(document).ready(function(){
 
     //click handler for the equals operator on the calculator, runs the function parseMath
     $('.equals').click(function() {
-        parseMath();
+        for(var i = 0; i < inputStorage.length; i++) {
+            parseMath();
+        }
     });
 
     $('.clearContainer div button:first-child').click(function(){
