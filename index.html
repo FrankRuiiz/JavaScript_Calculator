@@ -5,37 +5,7 @@
     <title>JavaScript Calculator</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="http://Learning-Fuze.github.io/calculator/calculator.js"></script>
-
-    <script>
-        function callback(type, value, item) {
-            switch(value) {
-                case undefined:
-                    $('.output .value').html();
-                    break;
-                default:
-                    $('.output .value').html(value);
-            }
-        }
-
-        var my_calculator = new calculator(callback);
-
-        console.log(my_calculator);
-
-        $(document).ready(function () {
-           $('.button').on('click', function() {
-               var val = $(this).find('span').text();
-               switch(val) {
-                   case 'AC':
-                       my_calculator.allClear();
-                       break;
-                   default:
-                       my_calculator.addItem($(this).find('span').text());
-                       break;
-               }
-           });
-        });
-    </script>
+    <script src="scripts.js"></script>
 </head>
 <body>
 

@@ -67,7 +67,7 @@ function updateDisplay(){
     }
 
     //selects the display class and sets the text to the information stored in the output variable
-    $('#display').text(output);
+    $('.output').find('.value').text(output);
 }
 
 
@@ -80,10 +80,10 @@ function performCalculation(num1,num2,operator){
         case '-':
             result = num1 - num2;
             break;
-        case '*':
+        case 'x':
             result = num1 * num2;
             break;
-        case '/':
+        case '÷':
             result = num1 / num2;
             break;
     }
@@ -115,7 +115,7 @@ function parseMath(){
         console.log('error');
         inputStorage = '';
         storageIndex = 0;
-        $('#display').text('Error');
+        $('.output').find('.value').text('Error');
 
     }
     else if (num1 != undefined && num2 != undefined && operator != undefined) {
@@ -154,13 +154,15 @@ $(document).ready(function(){
     //click handler for the numbers keys, including decimal, on the calculator
     $('.number').click(function(){
         // passes the text from the html to the function storeNumber
-       storeNumber($(this).text());
+        var $num  = $(this).find('span').text();
+       storeNumber($num);
     });
 
     //click handler for the operator keys on the calculator
-    $('.operator').click(function(){
+    $('.operator').not('.equals').click(function(){
+        var $op = $(this).find('span').text();
         // passes the text from the html to the function storeOperator
-        storeOperator($(this).text());
+        storeOperator($op);
     });
 
     //click handler for the equals operator on the calculator, runs the function parseMath
@@ -172,11 +174,13 @@ $(document).ready(function(){
         }
     });
 
-    $('.clearContainer div button:first-child').click(function(){
+    $('.clear_all').click(function(){
+        console.log($(this).find('span').text());
         clearAll();
     });
 
-    $('.clearContainer div button:last-child').click(function(){
+    $('.clear').click(function(){
+        console.log($(this).find('span').text());
         specialClear();
     });
 });
