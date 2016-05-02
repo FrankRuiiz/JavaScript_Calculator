@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #333;
+}
+
+#calculator {
+    display: flex;
+    width: 70vmin;
+    height: 90vmin;
+    #background-color: green;
+    flex-direction: column;
+}
+
+.output {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #222;
+    color: #FFF;
+    align-items: center;
+    padding: 2.5vmin 5vmin;
+    border-radius: 1em;
+    margin-bottom: .5em;
+    overflow: hidden;
+
+}
+
+.value {
+    font-size: 10vmin;
+    line-height: 30vmin;
+    font-weight: 300;
+    color: gainsboro;
+    text-align: right;
+}
+
+.input {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    background-color: yellow;
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+.row {
+    flex: 1;
+    display: flex;
+    font-size: 6vmin;
+}
+
+.row:hover {
+    flex: 1.5;
+}
+.row:active {
+    flex: 2;
+}
+
+.row:nth-child(1) .operator {
+    background-color: #a4fba6;
+}
+
+.row:nth-child(2) .operator {
+    background-color: #4ae54a;
+}
+
+.row:nth-child(3) .operator {
+    background-color: #30cb00;
+}
+
+.row:nth-child(4) .operator {
+    background-color: #0f9200;
+}
+
+.row:nth-child(5) .operator {
+    background-color: #006203;
+}
+
+.button {
+    background-color: #eee;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:0;
+    padding: 0;
+    outline: thin solid rgba(51, 51, 51, 0.2);
+    cursor: pointer;
+}
+
+.button:active {
+    flex: 2;
+}
+
+span {
+    transition: .5s;
+    display: block;
+}
+
+.button:active span {
+    transform: scale(2.25);
+}
+
+.double {
+    flex: 2;
+}
+
+body {
+    background: rgb(125,126,125); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+}
+
+
