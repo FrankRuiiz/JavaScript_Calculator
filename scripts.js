@@ -145,10 +145,6 @@ function specialClear() {
 }
 
 
-
-
-
-
 $(document).ready(function(){
 
     //click handler for the numbers keys, including decimal, on the calculator
